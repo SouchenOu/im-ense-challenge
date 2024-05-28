@@ -10,7 +10,7 @@ const SideBar = () => {
     const rect = event.target.getBoundingClientRect();
     setTooltip({
       text,
-      position: { top: rect.top + 20, left: rect.left +90 },
+      position: { top: rect.top + 20, left: rect.left + 130 },
       visible: true,
     });
   };
@@ -34,14 +34,14 @@ const SideBar = () => {
             src="/Vector.png"
             alt="Vector"
             className='w-[30px] h-[30px] cursor-pointer'
-            onMouseEnter={(e) => showTooltip('Vector', e)}
+            onMouseEnter={(e) => showTooltip('Dashboard', e)}
             onMouseLeave={hideTooltip}
           />
           <img
             src="/icon.png"
             alt="Icon"
             className='w-[30px] h-[30px] cursor-pointer'
-            onMouseEnter={(e) => showTooltip('Icon', e)}
+            onMouseEnter={(e) => showTooltip('P.P.E Violations', e)}
             onMouseLeave={hideTooltip}
           />
         </div>
@@ -51,20 +51,20 @@ const SideBar = () => {
           src="/Vect.png"
           alt="Vect"
           className='w-[30px] h-[30px] cursor-pointer'
-          onMouseEnter={(e) => showTooltip('Vect', e)}
+          onMouseEnter={(e) => showTooltip('P.P.Es', e)}
           onMouseLeave={hideTooltip}
         />
         <img
           src="/Vect2.png"
           alt="Vect2"
           className='w-[30px] h-[30px] cursor-pointer'
-          onMouseEnter={(e) => showTooltip('Vect2', e)}
+          onMouseEnter={(e) => showTooltip('Contractors', e)}
           onMouseLeave={hideTooltip}
         />
         <FontAwesomeIcon
           icon={faUserLarge}
           className='w-[30px] h-[30px] text-blue-300 cursor-pointer'
-          onMouseEnter={(e) => showTooltip('User', e)}
+          onMouseEnter={(e) => showTooltip('Workers', e)}
           onMouseLeave={hideTooltip}
         />
       </div>
