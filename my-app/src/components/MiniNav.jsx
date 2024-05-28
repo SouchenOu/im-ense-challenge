@@ -6,7 +6,7 @@ const MiniNav = () => {
 
         <h1 className='text-[30px] text-gray-400  w-[150px] h-[70px] p-[20px] '>SITES</h1>
         <div className='text-[20px] flex items-start justify-start gap-[30px] p-[30px] border-l-[3px] h-[80px]  '>
-            <span className='text-[20px] text-gray-400 text-[#42A4DF]'>All</span>
+            <span className='text-[20px]  text-[#42A4DF]'>All</span>
             <span className='text-[20px] text-gray-400'>Site 1</span>
             <span className='text-[20px] text-gray-400'>Site 2</span>
             <span className='text-[20px] text-gray-400'>Site 3</span>
