@@ -15,10 +15,40 @@ const Main = () => {
             key: 'selection'
         }
     ]);
+    const workers = [
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-','-', '-', '-', '-', '-', '-', '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-'] },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-']  },
+        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2,'-' , '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+
+      ];
+    
+      const items = [
+        { name: 'Protective gloves', image: '/basbal.png' },
+        { name: 'Safety glasses', image: '/image.png' },
+        { name: 'Ear protection', image: '/Rect4.png' },
+        { name: 'Mask protection', image: '/Recta44.png' },
+        { name: 'Knee pads', image: '/image19.png' },
+        { name: 'Safety shoes', image: '/image20.png' },
+        { name: 'Coverall', image: '/image21.png' },
+        { name: 'Hi-Vis Jacket', image: '/image22.png' },
+        { name: 'Safety Harness', image: '/image23.png' },
+        { name: 'Face shield', image: '/image24.png' },
+        { name: 'Hard Hat', image: '/image25.png' },
+        { name: 'Welding helmet', image: '/image26.png' },
+      ];
 
     return (
-        <div className='bg-[#F2F2F2] h-full border-[0.5px] border-solid border-gray-300 p-[70px] w-full'>
-            <div className='flex items-center justify-between'>
+        <div className=' flex flex-col items-center gap-[30px] bg-[#F2F2F2] h-full border-[0.5px] border-solid border-gray-300 p-[70px] w-full'>
+            <div className='flex items-center  justify-between w-[2000px]'>
                 <h1 className='text-[30px]'>P.P.E Violations Table</h1>
                 <div className='flex items-center justify-center gap-[10px]'>
                     <div className='relative'>
@@ -48,6 +78,50 @@ const Main = () => {
                         )}
                     </div>
                 </div>
+            </div>
+            <div className="overflow-x-auto ">
+                <table className="min-w-full bg-white">
+                    <thead>
+                        <tr>
+                            <th className="px-[30px] py-3 border-b-2 border-gray-300 border-r text-[20px] font-semibold text-gray-600 uppercase tracking-wider">Worker</th>
+                            {items.map(item => (
+                                <th key={item.name} className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    <div className="flex flex-col items-center">
+                                        <img src={item.image} alt={item.name} className="h-[90px] w-[90px] mb-2 " />
+                                        <span>{item.name}</span>
+                                    </div>
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {workers.map((worker, index) => (
+                            <tr key={index} className="hover:bg-gray-100">
+                                <td className="px-6 py-4 border-b border-r border-gray-300 flex flex-col items-center">
+                                    <div className="gap-[40px] flex items-center">
+                                        <div className='flex items-center'>
+                                            <div className="flex-shrink-0 h-10 w-10">
+                                                <img className="h-10 w-10 rounded-full" src={worker.image} alt={worker.name} />
+                                            </div>
+                                            <div className="ml-4">
+                                                <div className="text-sm font-medium text-gray-900">{worker.name}</div>
+                                                <div className="text-sm text-gray-500">{worker.badge}</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex-shrink-0 h-10 w-10">
+                                            <img className="h-[50px] w-[90px] rounded-full" src="/img.png" alt="" />
+                                        </div>
+                                    </div>
+                                </td>
+                                {worker.score.map((score, i) => (
+                                    <td key={i} className={`px-[70px] py-4 border-b border-gray-300 text-sm`}>
+                                      <span className={ `${score === '-' ? '' : score < 5 ? 'bg-yellow-500 rounded-[70%] p-[10px]' : 'bg-red-500 rounded-[50%] p-[10px] text-white'    }`}>{score}</span>
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );
