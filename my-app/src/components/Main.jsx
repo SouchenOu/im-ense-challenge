@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { DateRange } from "react-date-range";
 import { format } from "date-fns";
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // Main style file
+import 'react-date-range/dist/theme/default.css'; // Theme CSS file
 import ViolationMenu from './ViolationMenu';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
     const [openDate, setOpenDate] = useState(false);
@@ -111,21 +111,38 @@ const Main = () => {
                         </span>
                         {openDate && (
                             <div className='relative'>
-                                <div className='absolute top-[40px] right-[0] z-10 bg-white shadow-lg p-[20px]'>
-                                    <DateRange
-                                        editableDateInputs={true}
-                                        onChange={item => setDates([item.selection])}
-                                        moveRangeOnFirstSelection={false}
-                                        ranges={dates}
-                                        minDate={new Date()}
-                                    />
-                                    <div className='flex justify-end gap-[10px] mt-[10px]'>
-                                        <button className=' text-gray-400 px-[20px] py-[5px] rounded' onClick={() => setOpenDate(false)}>Cancel</button>
-                                        <button className='bg-green-500 text-white px-[20px] py-[5px] rounded' onClick={() => setOpenDate(false)}>Apply</button>
+                            <div className='absolute top-[40px] right-[0] z-10 bg-white shadow-lg p-[20px] rounded'>
+                                <div className='p-[10px] flex flex-col gap-[20px]'>
+                                    <h1 className='text-[20px] flex items-center text-gray-500'>Date Range</h1>
+                                    <div className='flex items-center gap-[200px]  py-[5px]  px-[10px] border border-gray-300 cursor-pointer '>
+                                        <span className='rounded text-[18px]  text-gray-400'>Custom</span>
+                                        <FontAwesomeIcon icon={faChevronDown} className=''/>
                                     </div>
+                                   
+                                </div>
+                                
+                                <div className='flex flex-col items-end'>
+                                <DateRange
+                                    editableDateInputs={true}
+                                    onChange={item => setDates([item.selection])}
+                                    moveRangeOnFirstSelection={false}
+                                    ranges={dates}
+                                />
+                                <div className='flex justify-end gap-[10px] mt-[10px]'>
+                                    <button className='text-gray-400 px-[20px] py-[5px] rounded' onClick={() => setOpenDate(false)}>Cancel</button>
+                                    <button className='bg-green-500 text-white px-[20px] py-[5px] rounded' onClick={() => setOpenDate(false)}>Apply</button>
+                                </div>
                                 </div>
                             </div>
+                            </div>
                         )}
+                    </div>
+                    <div className='flex items-center gap-[100px]  py-[5px] pr-[20px] pl-[10px] border border-gray-300 cursor-pointer '>
+                        <span className='rounded text-[18px] text-gray-400'>All Contractors</span>
+                        <FontAwesomeIcon icon={faChevronDown} className=''/>
+                    </div>
+                    <div className='border-[2px] p-[10px]  bg-white rounded-[10px]'>
+                        <img src="/vvb.png" alt="" className='w-[13px] h-[13px]'/>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
-import MouseClick from './mouseClick/MouseClick';
 import { faBars, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 
 const AnotherSideBar = ({toggleSidebar}) => {
