@@ -1,10 +1,11 @@
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+import ViolationMenu from './ViolationMenu';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
     const [openDate, setOpenDate] = useState(false);
@@ -15,6 +16,8 @@ const Main = () => {
             key: 'selection'
         }
     ]);
+    const [menuState, setMenuState] = useState({ visible: false, violations: [] });
+
     const workers = [
         { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
         { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
@@ -45,7 +48,54 @@ const Main = () => {
         { name: 'Hard Hat', image: '/image25.png' },
         { name: 'Welding helmet', image: '/image26.png' },
       ];
+      const violationsData = [
+        {
+            image: '/11.png',
+            comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore',
+            date: '15/11/2022 10:34',
+            id: '03'
+        },
+        {
+            image: '/2.png',
+            comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore.',
+            date: '15/11/2022 10:34',
+            id: '07'
+        },
+        {
+            image: '/11.png',
+            comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore',
+            date: '15/11/2022 10:34',
+            id: '03'
+        },
+        {
+            image: '/2.png',
+            comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore.',
+            date: '15/11/2022 10:34',
+            id: '07'
+        },
+        {
+            image: '/11.png',
+            comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore',
+            date: '15/11/2022 10:34',
+            id: '03'
+        },
+        {
+            image: '/2.png',
+            comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore.',
+            date: '15/11/2022 10:34',
+            id: '07'
+        },
+    ];
 
+    const handleCellClick = (score) => {
+        if (score !== '-') {
+            setMenuState({ visible: true, violations: violationsData });
+        }
+    };
+
+    const closeMenu = () => {
+        setMenuState({ visible: false, violations: [] });
+    };
     return (
         <div className=' flex flex-col items-center gap-[30px] bg-[#F2F2F2] h-full border-[0.5px] border-solid border-gray-300 p-[70px] w-full'>
             <div className='flex items-center  justify-between w-[2000px]'>
@@ -114,8 +164,8 @@ const Main = () => {
                                     </div>
                                 </td>
                                 {worker.score.map((score, i) => (
-                                    <td key={i} className={`px-[70px] py-4 border-b border-gray-300 text-sm`}>
-                                      <span className={ `${score === '-' ? '' : score < 5 ? 'bg-yellow-500 rounded-[70%] p-[10px]' : 'bg-red-500 rounded-[50%] p-[10px] text-white'    }`}>{score}</span>
+                                    <td key={i} className={`px-[70px] py-4 border-b border-gray-300 text-sm`} onClick={() => handleCellClick(score)}>
+                                      <span className={ `${score === '-' ? '' : score < 5 ? 'bg-yellow-500 rounded-[70%] p-[10px] cursor-pointer' : 'bg-red-500 rounded-[50%] p-[10px] text-white cursor-pointer'    }`}>{score}</span>
                                     </td>
                                 ))}
                             </tr>
@@ -123,6 +173,8 @@ const Main = () => {
                     </tbody>
                 </table>
             </div>
+            {menuState.visible && <ViolationMenu violations={menuState.violations} onClose={closeMenu} />}
+
         </div>
     );
 }
