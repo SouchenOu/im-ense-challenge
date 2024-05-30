@@ -5,10 +5,12 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Main style file
 import 'react-date-range/dist/theme/default.css'; // Theme CSS file
 import ViolationMenu from './ViolationMenu';
-import { faChevronDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faGear, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import NewBar from './NewBar';
 
 const Main = () => {
     const [openDate, setOpenDate] = useState(false);
+    const [OpenBar, setOpenBar] = useState({ visible: false });;
     const [dates, setDates] = useState([
         {
             startDate: new Date(),
@@ -19,18 +21,19 @@ const Main = () => {
     const [menuState, setMenuState] = useState({ visible: false, violations: [] });
 
     const workers = [
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-','-', '-', '-', '-', '-', '-', '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-'] },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-']  },
-        { name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2,'-' , '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { id:"1", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { id:"2", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
+        { id:"3", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-','-', '-', '-', '-', '-', '-', '-', '-'] },
+        { id:"4", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { id:"5", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
+        { id:"6", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-'] },
+        { id:"7", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { id:"8", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', 2, '-', '-', '-', 10, '-', 1, '-', '-', '-', 3] },
+        { id:"9", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2, '-', '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
+        { id:"10", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-'] },
+        { id:"11", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-']  },
+        { id:"12", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: ['-', '-', 11, '-', '-', '-', '-', '-', '-', '-', '-', '-']  },
+        { id:"13", name: 'Blaise DEFLOO', image: '/photo.png', badge: 'Manager', score: [2,'-' , '-', 10, '-', '-', 1, '-', '-', 3, '-', '-'] },
 
       ];
     
@@ -65,25 +68,25 @@ const Main = () => {
             image: '/11.png',
             comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore',
             date: '15/11/2022 10:34',
-            id: '03'
+            id: '01'
         },
         {
             image: '/2.png',
             comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore.',
             date: '15/11/2022 10:34',
-            id: '07'
+            id: '10'
         },
         {
             image: '/11.png',
             comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore',
             date: '15/11/2022 10:34',
-            id: '03'
+            id: '02'
         },
         {
             image: '/2.png',
             comment: 'consectetur adipiscing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscingdo eiusmod tempor incididunt labore.',
             date: '15/11/2022 10:34',
-            id: '07'
+            id: '11'
         },
     ];
 
@@ -96,6 +99,15 @@ const Main = () => {
     const closeMenu = () => {
         setMenuState({ visible: false, violations: [] });
     };
+    const clicktheSetting = ()=>{
+        setOpenBar({ visible: true })
+    }
+
+    const closeNewBar = ()=>{
+        setOpenBar({ visible: false });
+    }
+
+   
     return (
         <div className=' flex flex-col items-center gap-[30px] bg-[#F2F2F2] h-full border-[0.5px] border-solid border-gray-300 p-[70px] w-full'>
             <div className='flex items-center  justify-between w-[2000px]'>
@@ -149,29 +161,40 @@ const Main = () => {
             <div className="overflow-x-auto ">
                 <table className="min-w-full bg-white">
                     <thead>
-                        <tr>
-                            <th className="px-[30px] py-3 border-b-2 border-gray-300 border-r text-[20px] font-semibold text-gray-600 uppercase tracking-wider">Worker</th>
+                        <tr className='px-[40px]'>
+                            <div className='flex items-center justify-center gap-[30px]   py-[90px] border-b-2 border-gray-300 border-r'>
+                                <FontAwesomeIcon icon={faGear} className='p-[8px]  border-gray-300 cursor-pointer w-[30px] h-[30px] text-gray-300' onClick={()=>clicktheSetting()}/>
+                                <th className=" text-[20px] font-semibold text-gray-600 uppercase tracking-wider ">Worker</th>
+
+                            </div>
+                           
                             {items.map(item => (
                                 <th key={item.name} className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     <div className="flex flex-col items-center">
                                         <img src={item.image} alt={item.name} className="h-[90px] w-[90px] mb-2 " />
-                                        <span>{item.name}</span>
+                                        <span className=''>{item.name}</span>
                                     </div>
                                 </th>
                             ))}
+                            {OpenBar.visible && <NewBar  onClose={closeNewBar}/>}
+
                         </tr>
                     </thead>
                     <tbody>
                         {workers.map((worker, index) => (
                             <tr key={index} className="hover:bg-gray-100">
-                                <td className="w-[270px] py-4 border-b border-r border-gray-300 flex flex-col items-center">
-                                    <div className="gap-[40px] flex items-center">
+                                <td className="w-[260px] py-[10px] border-b border-r border-gray-300 flex flex-col items-center">
+                                    <div className="gap-[10px] flex items-center ">
+                                        <span className='text-[20px] border-gray-400 px-[2px] h-full'>{worker.id}</span>
+
                                         <div className='flex items-center'>
+
                                             <div className="flex-shrink-0 h-10 w-10">
                                                 <img className="h-10 w-10 rounded-full" src={worker.image} alt={worker.name} />
                                             </div>
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">{worker.name}</div>
+                                            <div className="ml-4 ">
+
+                                                <div className="text-sm font-medium text-gray-900 ">{worker.name}</div>
                                                 <div className="text-sm text-gray-500">{worker.badge}</div>
                                             </div>
                                         </div>
