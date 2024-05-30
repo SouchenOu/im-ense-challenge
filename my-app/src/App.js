@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="flex">
-      {isAnotherSidebarVisible ? <AnotherSideBar /> : <SideBar />}
+      {isAnotherSidebarVisible ? <AnotherSideBar toggleSidebar={toggleSidebar}/> : <SideBar />}
       <div className="flex-[24]">
         <Navbar toggleSidebar={toggleSidebar} />
         <MiniNav/>

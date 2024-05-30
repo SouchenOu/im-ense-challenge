@@ -147,7 +147,7 @@ const Main = () => {
                     <tbody>
                         {workers.map((worker, index) => (
                             <tr key={index} className="hover:bg-gray-100">
-                                <td className="px-6 py-4 border-b border-r border-gray-300 flex flex-col items-center">
+                                <td className="w-[270px] py-4 border-b border-r border-gray-300 flex flex-col items-center">
                                     <div className="gap-[40px] flex items-center">
                                         <div className='flex items-center'>
                                             <div className="flex-shrink-0 h-10 w-10">
@@ -165,7 +165,7 @@ const Main = () => {
                                 </td>
                                 {worker.score.map((score, i) => (
                                     <td key={i} className={`px-[70px] py-4 border-b border-gray-300 text-sm`} onClick={() => handleCellClick(score)}>
-                                      <span className={ `${score === '-' ? '' : score < 5 ? 'bg-yellow-500 rounded-[70%] p-[10px] cursor-pointer' : 'bg-red-500 rounded-[50%] p-[10px] text-white cursor-pointer'    }`}>{score}</span>
+                                      <span className={ `${score === '-' ? '' : score < 5 ? 'bg-yellow-500 rounded-[70%]  px-[10px] py-[7px] cursor-pointer ' : 'bg-red-500 rounded-[50%] p-[10px] text-white cursor-pointer '    }`}>{score}</span>
                                     </td>
                                 ))}
                             </tr>

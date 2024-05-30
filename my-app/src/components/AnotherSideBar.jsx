@@ -1,19 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
 import MouseClick from './mouseClick/MouseClick';
-import { faUserLarge } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 
-const AnotherSideBar = () => {
+const AnotherSideBar = ({toggleSidebar}) => {
    
     return (
-      <div className='flex-[4] min-h-[100vh] p-[0] border-r-[0.5px] border-solid border-gray-300 relative'>
+      <div className='flex-[4] min-h-[100vh] p-[0] border-r-[0.5px] border-solid bg-white border-gray-300 absolute top-0 left-0  h-full z-50'>
         <div className='flex flex-col gap-[40px] items-start p-[10px] h-[300px] border border-b-gray-300'>
-                <img
-                src="/lg.png"
-                alt="Logo"
-                className='w-[240px] h-[60px] cursor-pointer'
-              
-            />
+          <div className='flex items-center gap-[20px]'>
+            <img
+                  src="/lg.png"
+                  alt="Logo"
+                  className='w-[240px] h-[60px] cursor-pointer'
+                
+              />
+              <FontAwesomeIcon icon={faBars} className="w-[30px] h-[30px] cursor-pointer" onClick={toggleSidebar}/>
+
+
+          </div>
+                
 
           
           <div className='flex flex-col items-start  justify-start gap-[20px] w-[300px]'>
